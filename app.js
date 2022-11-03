@@ -5,6 +5,7 @@
 
 let express = require("express");
 let app = express();
+module.exports = app;
 
 app.use(express.json());
 
@@ -207,4 +208,91 @@ app.post("/todos/", async (request, response) => {
   `;
   await db.run(postSqlQuery);
   response.send("Todo Successfully Added");
+});
+
+//API-5 PUT
+app.put("/todos/:todoId/", async (request, response) => {
+  try {
+    let { status, priority, todo, category, dueDate } = request.body;
+    let { todoId } = request.params;
+    let sqlQuery = "";
+    let column = "";
+    switch (true) {
+      case request.body.status !== undefined:
+        sqlQuery = `
+            UPDATE 
+                todo
+            SET
+                status = '${status}'
+            WHERE 
+                id = '${todoId}';
+
+          `;
+        column = "Status";
+
+        break;
+      case request.body.priority !== undefined:
+        sqlQuery = `
+            UPDATE 
+                todo
+            SET
+                priority = '${priority}'
+            WHERE 
+                id = '${todoId}';    
+          `;
+        column = "Priority";
+
+        break;
+      case request.body.todo !== undefined:
+        sqlQuery = `
+            UPDATE 
+                todo
+            SET
+                todo = '${todo}'
+            WHERE 
+                id = '${todoId}';  
+          `;
+        column = "Todo";
+
+        break;
+      case request.body.category !== undefined:
+        sqlQuery = `
+            UPDATE 
+                todo
+            SET
+                category = '${category}'
+            WHERE 
+                id = '${todoId}';   
+          `;
+        column = "Category";
+
+        break;
+      case request.body.dueDate !== undefined:
+        sqlQuery = `
+            UPDATE 
+                todo
+            SET
+                due_date = '${dueDate}'
+            WHERE 
+                id = '${todoId}';  
+          `;
+        column = "Due Date";
+
+        break;
+    }
+
+    await db.run(dueDate);
+    response.send(`${column} Updated`);
+  } catch (e) {
+    console.log(`DB Error: ${e.message}`);
+  }
+});
+
+// API-6 DELETE
+app.delete("/todos/:todoId/", async (request, response) => {
+  let { todoId } = request.params;
+
+  let deleteSqlQuery = `DELETE FROM todo WHERE id = ${todoId};`;
+  await db.run(deleteSqlQuery);
+  response.send("Todo Deleted");
 });
