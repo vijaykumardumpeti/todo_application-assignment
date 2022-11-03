@@ -1,0 +1,54 @@
+### API-1 GET
+
+### scenario-1
+GET http://localhost:3000/todos/?status=TO%20DO 
+
+
+### ### scenario-2
+GET http://localhost:3000/todos/?priority=HIGH  
+
+
+### ### scenario-3
+GET http://localhost:3000/todos/?priority=HIGH&status=IN%20PROGRESS 
+
+
+
+### ### scenario-4
+GET http://localhost:3000/todos/?search_q=Buy
+
+
+
+### ### scenario-5
+GET http://localhost:3000/todos/?category=WORK&status=DONE 
+
+
+
+### ### scenario-6
+GET http://localhost:3000/todos/?category=HOME 
+
+
+
+### ### scenario-7
+GET http://localhost:3000/todos/?category=LEARNING&priority=HIGH 
+
+
+### API-2 GET 
+GET http://localhost:3000/todos/1/
+
+
+### API-3 GET 2021-12-12 ==> not getting any data
+GET http://localhost:3000/agenda/?date=2021-02-22
+
+
+### API-4 POST
+POST http://localhost:3000/todos/ 
+Content-Type: application/json
+
+{
+    "id": 6,
+    "todo": "Finalize event theme",
+    "priority": "LOW",
+    "status": "TO DO",
+    "category": "HOME",
+    "dueDate": "2021-02-22"
+}
