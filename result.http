@@ -13,7 +13,7 @@ GET http://localhost:3000/todos/?priority=HIGH&status=IN%20PROGRESS
 
 
 
-### ### scenario-4 <><><><><><><><>
+### ### scenario-4
 GET http://localhost:3000/todos/?search_q=Buy
 
 
@@ -52,52 +52,58 @@ Content-Type: application/json
     "category": "HOME",
     "dueDate": "2021-02-22"
 }
-
-### API-5
-
-### scenario-1 PUT 
-PUT http://localhost:3000/todos/2/
+### API-5 PUT
+### scenario-1
+PUT http://localhost:3000/todos/2/ 
 Content-Type: application/json
 
 {
+
     "status": "DONE"
+
 }
 
-### scenario-2 PUT 
-PUT http://localhost:3000/todos/2/
+### scenario-2
+PUT http://localhost:3000/todos/2/ 
 Content-Type: application/json
 
 {
+
     "priority": "HIGH"
+
 }
 
 
-### scenario-3 PUT 
-PUT http://localhost:3000/todos/2/
+### scenario-3
+PUT http://localhost:3000/todos/2/ 
 Content-Type: application/json
 
 {
+
     "todo": "Clean the garden"
+
 }
 
-
-### scenario-4 PUT 
-PUT http://localhost:3000/todos/2/
+### scenario-4
+PUT http://localhost:3000/todos/2/ 
 Content-Type: application/json
 
 {
+
     "category": "LEARNING"
+
 }
 
-
-### scenario-5 PUT 
-PUT http://localhost:3000/todos/2/
+### scenario-5
+PUT http://localhost:3000/todos/2/ 
 Content-Type: application/json
 
 {
+
     "dueDate": "2021-01-12"
+
 }
 
+### API-6
 
-###API- 6 DELETE
-DELETE http://localhost:3000/todos/1/
+DELETE http://localhost:3000/todos/2/
